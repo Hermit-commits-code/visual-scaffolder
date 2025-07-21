@@ -34,10 +34,7 @@ class ProjectScaffolder:
                     config.get("custom_eslint_rules", {}),
                     config.get("use_tailwind", False),
                     config.get("use_prettier", False),
-                    config.get(
-                        "prettier_config",
-                        {"singleQuote": True, "trailingComma": "es5", "printWidth": 80},
-                    ),
+                    config.get("prettier_config", {}),
                     config.get("auto_install", False),
                     config.get("use_standalone", False),
                     config.get("use_tests", False),

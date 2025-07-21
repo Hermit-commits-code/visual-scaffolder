@@ -130,17 +130,35 @@ def create_vue_project(
 
         # Apply custom ESLint rules
         if use_eslint and custom_eslint_rules:
-            eslint_file = os.path.join(project_dir, ".eslintrc.json")
-            with open(eslint_file, "w") as f:
-                f.write(json.dumps(custom_eslint_rules, indent=2))
-            logging.info(f"Applied custom ESLint rules to {eslint_file}")
+            try:
+                if not isinstance(custom_eslint_rules, dict):
+                    raise ValueError("Custom ESLint rules must be a valid JSON object")
+                eslint_config = {
+                    "env": {"browser": True, "es2021": True},
+                    "extends": [f"eslint-config-{eslint_config}"],
+                    "parserOptions": {"ecmaVersion": 12, "sourceType": "module"},
+                    "rules": custom_eslint_rules.get("rules", {}),
+                }
+                eslint_file = os.path.join(project_dir, ".eslintrc.json")
+                with open(eslint_file, "w") as f:
+                    json.dump(eslint_config, f, indent=2)
+                logging.info(f"Applied custom ESLint rules to {eslint_file}")
+            except ValueError as e:
+                logging.error(f"Invalid ESLint configuration: {str(e)}")
+                return False, f"Invalid ESLint configuration: {str(e)}"
 
         # Apply Prettier config
         if use_prettier and prettier_config:
-            prettier_file = os.path.join(project_dir, ".prettierrc")
-            with open(prettier_file, "w") as f:
-                f.write(json.dumps(prettier_config, indent=2))
-            logging.info(f"Applied Prettier config to {prettier_file}")
+            try:
+                if not isinstance(prettier_config, dict):
+                    raise ValueError("Prettier config must be a valid JSON object")
+                prettier_file = os.path.join(project_dir, ".prettierrc")
+                with open(prettier_file, "w") as f:
+                    json.dump(prettier_config, f, indent=2)
+                logging.info(f"Applied Prettier config to {prettier_file}")
+            except ValueError as e:
+                logging.error(f"Invalid Prettier configuration: {str(e)}")
+                return False, f"Invalid Prettier configuration: {str(e)}"
 
         # Apply environment variables
         if env_vars:

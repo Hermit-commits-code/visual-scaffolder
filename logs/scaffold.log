@@ -277,3 +277,77 @@ Run `npm audit` for details.
 2025-07-21 12:14:27,822 - INFO - Created /home/joe/Desktop/repos/super-vue-js/postcss.config.js
 2025-07-21 12:14:27,822 - INFO - Installing Prettier
 2025-07-21 12:14:29,501 - INFO - Applied Prettier config to /home/joe/Desktop/repos/super-vue-js/.prettierrc
+2025-07-21 12:22:52,684 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-js
+2025-07-21 12:22:52,702 - INFO - Node.js found: v24.4.1
+2025-07-21 12:22:52,702 - WARNING - Node.js version v24.4.1 is not supported (required: 8-22)
+2025-07-21 12:22:52,703 - INFO - Attempting to install Node.js
+2025-07-21 12:22:52,897 - INFO - Internet connection verified
+2025-07-21 12:22:52,931 - INFO - Sudo access verified (non-interactive)
+2025-07-21 12:22:52,931 - INFO - Downloading Node.js 18.19.0 setup script
+2025-07-21 12:22:53,051 - INFO - Running Node.js setup script
+2025-07-21 12:22:57,941 - INFO - Installing Node.js
+2025-07-21 12:22:58,622 - INFO - Node.js installed: v24.4.1
+2025-07-21 12:22:58,622 - INFO - Cleaned up /tmp/nodesource_setup.sh
+2025-07-21 12:22:58,622 - INFO - Vue CLI not installed or not found in PATH
+2025-07-21 12:22:58,622 - INFO - Attempting to install Vue CLI
+2025-07-21 12:22:58,622 - INFO - Installing Vue CLI globally
+2025-07-21 12:23:20,802 - INFO - Vue CLI installed: @vue/cli 5.0.8
+2025-07-21 12:23:20,803 - INFO - Running command: vue create super-vue-js --default --force --packageManager=npm in /home/joe/Desktop/repos
+2025-07-21 12:23:44,372 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/super-vue-js.
+🗃  Initializing git repository...
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 830 packages, and audited 831 packages in 17s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 917 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project super-vue-js.
+👉  Get started with the following commands:
+
+ $ cd super-vue-js
+ $ npm run serve
+
+
+2025-07-21 12:23:44,372 - INFO - Installing TypeScript dependencies
+2025-07-21 12:23:46,525 - INFO - Installing ESLint with config prettier
+2025-07-21 12:23:48,177 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-21 12:23:51,766 - INFO - Created /home/joe/Desktop/repos/super-vue-js/tailwind.config.js
+2025-07-21 12:23:51,767 - INFO - Created /home/joe/Desktop/repos/super-vue-js/postcss.config.js
+2025-07-21 12:23:51,767 - INFO - Created /home/joe/Desktop/repos/super-vue-js/src/assets/main.css with Tailwind directives
+2025-07-21 12:23:51,767 - INFO - Installing Prettier
+2025-07-21 12:23:53,559 - INFO - Applied Prettier config to /home/joe/Desktop/repos/super-vue-js/.prettierrc
+2025-07-21 12:36:09,483 - INFO - Validating project name: super-vue-js
+2025-07-21 12:36:09,485 - INFO - Project name validated successfully
