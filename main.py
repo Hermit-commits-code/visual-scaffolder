@@ -3,13 +3,15 @@ import ttkbootstrap as ttkb
 from tkinter import filedialog
 import re
 import os
+from scaffolder import ProjectScaffolder
 
 
 class ProjectScaffolderApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Project Scaffolder")
-        self.project_path = os.path.expanduser("~/Desktop/repos")
+        self.project_path = os.path.expanduser("~/Desktop/repos/visual-scaffolder")
+        self.scaffolder = ProjectScaffolder(self.project_path)
         self.config = {
             "project_name": "",
             "project_path": self.project_path,
@@ -74,8 +76,15 @@ class ProjectScaffolderApp:
             self.framework_frame, self.framework_var, "Vue.js", *frameworks
         )
         self.framework_menu.grid(row=0, column=1, padx=5, pady=5)
+        self.create_button = ttkb.Button(
+            self.framework_frame,
+            text="Create",
+            command=self.create_project,
+            bootstyle="success",
+        )
+        self.create_button.grid(row=1, column=0, columnspan=2, pady=10)
         self.framework_result_label = ttkb.Label(self.framework_frame, text="")
-        self.framework_result_label.grid(row=1, column=0, columnspan=2, pady=5)
+        self.framework_result_label.grid(row=2, column=0, columnspan=2, pady=5)
 
         # Navigation Buttons
         self.nav_frame = ttkb.Frame(self.main_frame)
@@ -95,6 +104,7 @@ class ProjectScaffolderApp:
         # Initialize UI
         self.notebook.select(0)
         self.prev_button.configure(state="disabled")
+        self.framework_var.trace("w", self.update_framework)
 
     def browse_directory(self):
         directory = filedialog.askdirectory(initialdir=self.project_path)
@@ -104,6 +114,7 @@ class ProjectScaffolderApp:
             self.dir_result_label.config(
                 text=f"Selected directory: {directory}", bootstyle="success"
             )
+            self.scaffolder.project_path = directory
         else:
             self.dir_result_label.config(
                 text="No directory selected", bootstyle="warning"
@@ -156,6 +167,16 @@ class ProjectScaffolderApp:
         self.framework_result_label.config(
             text=f"Selected framework: {self.config['framework']}", bootstyle="success"
         )
+
+    def create_project(self):
+        success, error = self.scaffolder.create_project(self.config)
+        if success:
+            self.framework_result_label.config(
+                text=f"Project '{self.config['project_name']}' created successfully",
+                bootstyle="success",
+            )
+        else:
+            self.framework_result_label.config(text=error, bootstyle="danger")
 
 
 if __name__ == "__main__":
