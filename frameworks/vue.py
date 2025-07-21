@@ -2,29 +2,7 @@ import os
 import subprocess
 import logging
 import json
-
-
-def check_dependencies():
-    try:
-        result = subprocess.run(
-            ["node", "--version"], capture_output=True, text=True, check=True
-        )
-        node_version = result.stdout.strip()
-        logging.info(f"Node.js found: {node_version}")
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        logging.error("Node.js not installed or not found in PATH")
-        return False, "Node.js is not installed or not found in PATH"
-
-    try:
-        result = subprocess.run(
-            ["vue", "--version"], capture_output=True, text=True, check=True
-        )
-        vue_version = result.stdout.strip()
-        logging.info(f"Vue CLI found: {vue_version}")
-        return True, ""
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        logging.error("Vue CLI not installed or not found in PATH")
-        return False, "Vue CLI is not installed or not found in PATH"
+from dependencies import DependencyManager
 
 
 def create_vue_project(
@@ -44,8 +22,12 @@ def create_vue_project(
     use_stylelint,
     env_vars,
 ):
-    # Check dependencies first
-    success, error = check_dependencies()
+    # Initialize DependencyManager
+    log_file = os.path.join(project_path, "logs", "scaffold.log")
+    dep_manager = DependencyManager(log_file)
+
+    # Ensure dependencies
+    success, error = dep_manager.ensure_dependencies()
     if not success:
         return False, error
 
@@ -90,13 +72,13 @@ def create_vue_project(
                 check=True,
             )
         if use_tailwind:
-            logging.info("Installing Tailwind CSS")
+            logging.info("Installing Tailwind CSS with PostCSS plugin")
             subprocess.run(
                 [
                     package_manager,
                     "install",
                     "--save-dev",
-                    "tailwindcss",
+                    "@tailwindcss/postcss",
                     "postcss",
                     "autoprefixer",
                 ],
@@ -114,11 +96,30 @@ def create_vue_project(
                 f.write(f"module.exports = {json.dumps(tailwind_config, indent=2)}")
             logging.info(f"Created {tailwind_config_file}")
             # Manually create postcss.config.js
-            postcss_config = {"plugins": {"tailwindcss": {}, "autoprefixer": {}}}
+            postcss_config = {
+                "plugins": {"@tailwindcss/postcss": {}, "autoprefixer": {}}
+            }
             postcss_config_file = os.path.join(project_dir, "postcss.config.js")
             with open(postcss_config_file, "w") as f:
                 f.write(f"module.exports = {json.dumps(postcss_config, indent=2)}")
             logging.info(f"Created {postcss_config_file}")
+            # Update main.css or equivalent to include Tailwind directives
+            css_file = os.path.join(project_dir, "src", "assets", "main.css")
+            tailwind_directives = """
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+"""
+            if os.path.exists(css_file):
+                with open(css_file, "a") as f:
+                    f.write(tailwind_directives)
+                logging.info(f"Appended Tailwind directives to {css_file}")
+            else:
+                css_dir = os.path.dirname(css_file)
+                os.makedirs(css_dir, exist_ok=True)
+                with open(css_file, "w") as f:
+                    f.write(tailwind_directives)
+                logging.info(f"Created {css_file} with Tailwind directives")
         if use_prettier:
             logging.info("Installing Prettier")
             subprocess.run(
