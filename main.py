@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import filedialog
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 import os
@@ -114,9 +115,11 @@ class ProjectScaffolderApp:
         self.status_label.grid(row=3, column=0, columnspan=2, pady=5)
 
     def browse_path(self):
-        path = tk.filedialog.askdirectory()
+        logging.info("Opening directory chooser dialog")
+        path = filedialog.askdirectory()
         if path:
             self.project_path.set(path)
+            logging.info(f"Selected project path: {path}")
 
     def validate_step2(self):
         project_path = self.project_path.get().strip()
