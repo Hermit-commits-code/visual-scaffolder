@@ -16,6 +16,18 @@ class ProjectScaffolderApp:
             "project_name": "",
             "project_path": self.project_path,
             "framework": "Vue.js",
+            "use_typescript": False,
+            "use_eslint": False,
+            "eslint_config": "prettier",
+            "custom_eslint_rules": {},
+            "use_tailwind": False,
+            "use_prettier": False,
+            "prettier_config": {
+                "singleQuote": True,
+                "trailingComma": "es5",
+                "printWidth": 80,
+            },
+            "package_manager": "npm",
         }
         self.current_step = 0
 
@@ -76,15 +88,44 @@ class ProjectScaffolderApp:
             self.framework_frame, self.framework_var, "Vue.js", *frameworks
         )
         self.framework_menu.grid(row=0, column=1, padx=5, pady=5)
+        # Configuration Options
+        self.typescript_var = tk.BooleanVar()
+        ttkb.Checkbutton(
+            self.framework_frame,
+            text="Use TypeScript",
+            variable=self.typescript_var,
+            command=self.update_config,
+        ).grid(row=1, column=0, columnspan=2, pady=5)
+        self.tailwind_var = tk.BooleanVar()
+        ttkb.Checkbutton(
+            self.framework_frame,
+            text="Use Tailwind CSS",
+            variable=self.tailwind_var,
+            command=self.update_config,
+        ).grid(row=2, column=0, columnspan=2, pady=5)
+        self.eslint_var = tk.BooleanVar()
+        ttkb.Checkbutton(
+            self.framework_frame,
+            text="Use ESLint",
+            variable=self.eslint_var,
+            command=self.update_config,
+        ).grid(row=3, column=0, columnspan=2, pady=5)
+        self.prettier_var = tk.BooleanVar()
+        ttkb.Checkbutton(
+            self.framework_frame,
+            text="Use Prettier",
+            variable=self.prettier_var,
+            command=self.update_config,
+        ).grid(row=4, column=0, columnspan=2, pady=5)
         self.create_button = ttkb.Button(
             self.framework_frame,
             text="Create",
             command=self.create_project,
             bootstyle="success",
         )
-        self.create_button.grid(row=1, column=0, columnspan=2, pady=10)
+        self.create_button.grid(row=5, column=0, columnspan=2, pady=10)
         self.framework_result_label = ttkb.Label(self.framework_frame, text="")
-        self.framework_result_label.grid(row=2, column=0, columnspan=2, pady=5)
+        self.framework_result_label.grid(row=6, column=0, columnspan=2, pady=5)
 
         # Navigation Buttons
         self.nav_frame = ttkb.Frame(self.main_frame)
@@ -168,15 +209,25 @@ class ProjectScaffolderApp:
             text=f"Selected framework: {self.config['framework']}", bootstyle="success"
         )
 
+    def update_config(self):
+        self.config["use_typescript"] = self.typescript_var.get()
+        self.config["use_tailwind"] = self.tailwind_var.get()
+        self.config["use_eslint"] = self.eslint_var.get()
+        self.config["use_prettier"] = self.prettier_var.get()
+
     def create_project(self):
+        self.create_button.configure(state="disabled")
         success, error = self.scaffolder.create_project(self.config)
+        self.create_button.configure(state="normal")
         if success:
             self.framework_result_label.config(
                 text=f"Project '{self.config['project_name']}' created successfully",
                 bootstyle="success",
             )
         else:
-            self.framework_result_label.config(text=error, bootstyle="danger")
+            self.framework_result_label.config(
+                text=f"Error: {error}", bootstyle="danger"
+            )
 
 
 if __name__ == "__main__":

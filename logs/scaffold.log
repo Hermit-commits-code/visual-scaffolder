@@ -1,2 +1,125 @@
 2025-07-21 11:24:50,796 - INFO - Created project directory: /home/joe/Desktop/testing/super-project
 2025-07-21 11:25:13,166 - INFO - Created project directory: /home/joe/Desktop/testing/super-project
+2025-07-21 11:34:26,962 - INFO - Created project directory: /home/joe/Desktop/testing/first-vue-project
+2025-07-21 11:34:26,963 - INFO - Running command: vue create first-vue-project --default --force --package-manager=npm --typescript --eslint=prettier --tailwind --prettier in /home/joe/Desktop/testing
+2025-07-21 11:34:26,965 - ERROR - Unexpected error: [Errno 2] No such file or directory: 'vue'
+2025-07-21 11:41:44,971 - INFO - Created project directory: /home/joe/Desktop/testing/super-vue-project
+2025-07-21 11:41:44,989 - INFO - Node.js found: v24.4.1
+2025-07-21 11:41:45,134 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-21 11:41:45,134 - INFO - Running command: vue create super-vue-project --default --force --package-manager=npm --typescript --eslint=prettier --tailwind --prettier in /home/joe/Desktop/testing
+2025-07-21 11:41:45,259 - ERROR - Vue.js project creation failed: 
+2025-07-21 11:46:13,543 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-21 11:46:13,552 - INFO - Node.js found: v24.4.1
+2025-07-21 11:46:13,671 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-21 11:46:13,671 - INFO - Running command: vue create super-vue-project --default --force --packageManager=npm in /home/joe/Desktop/repos
+2025-07-21 11:46:48,698 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/super-vue-project.
+🗃  Initializing git repository...
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 830 packages, and audited 831 packages in 28s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 917 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project super-vue-project.
+👉  Get started with the following commands:
+
+ $ cd super-vue-project
+ $ npm run serve
+
+
+2025-07-21 11:46:48,698 - INFO - Installing TypeScript dependencies
+2025-07-21 11:46:50,994 - INFO - Installing ESLint with config prettier
+2025-07-21 11:46:52,795 - INFO - Installing Tailwind CSS
+2025-07-21 11:46:55,281 - ERROR - Vue.js project creation failed: No additional error details
+2025-07-21 11:46:55,282 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-21 11:46:55,287 - INFO - Node.js found: v24.4.1
+2025-07-21 11:46:55,405 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-21 11:46:55,405 - INFO - Running command: vue create super-vue-project --default --force --packageManager=npm in /home/joe/Desktop/repos
+2025-07-21 11:47:10,205 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/super-vue-project.
+🗃  Initializing git repository...
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 830 packages, and audited 831 packages in 9s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 917 packages in 2s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project super-vue-project.
+👉  Get started with the following commands:
+
+ $ cd super-vue-project
+ $ npm run serve
+
+
+2025-07-21 11:47:10,205 - INFO - Installing TypeScript dependencies
+2025-07-21 11:47:12,234 - INFO - Installing ESLint with config prettier
+2025-07-21 11:47:13,960 - INFO - Installing Tailwind CSS
+2025-07-21 11:47:16,348 - ERROR - Vue.js project creation failed: No additional error details
