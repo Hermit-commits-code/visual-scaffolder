@@ -2,6 +2,7 @@ import os
 import subprocess
 import logging
 import json
+import shutil
 from dependencies import DependencyManager
 
 
@@ -33,7 +34,19 @@ def create_angular_project(
 
     try:
         project_dir = os.path.join(project_path, project_name)
+        # Remove existing project directory to avoid merge conflicts
+        if os.path.exists(project_dir):
+            logging.info(f"Removing existing project directory: {project_dir}")
+            try:
+                shutil.rmtree(project_dir)
+                logging.info(f"Successfully removed {project_dir}")
+            except Exception as e:
+                logging.error(
+                    f"Failed to remove existing directory {project_dir}: {str(e)}"
+                )
+                return False, f"Failed to remove existing directory: {str(e)}"
         os.makedirs(project_dir, exist_ok=True)
+        logging.info(f"Created project directory: {project_dir}")
 
         # Construct ng new command
         cmd = [
@@ -60,6 +73,17 @@ def create_angular_project(
             cmd, cwd=project_path, check=True, capture_output=True, text=True
         )
         logging.info(f"Angular project created: {result.stdout}")
+
+        # Log project directory contents for debugging
+        dir_contents = os.listdir(project_dir)
+        logging.info(f"Project directory contents: {dir_contents}")
+        src_dir = os.path.join(project_dir, "src")
+        if os.path.exists(src_dir):
+            src_contents = os.listdir(src_dir)
+            logging.info(f"src directory contents: {src_contents}")
+        else:
+            logging.error("src directory not found")
+            return False, "Angular project creation failed: src directory not found"
 
         # Post-creation configuration
         if use_eslint:
@@ -127,17 +151,19 @@ def create_angular_project(
             with open(postcss_config_file, "w") as f:
                 f.write(f"module.exports = {json.dumps(postcss_config, indent=2)}")
             logging.info(f"Created {postcss_config_file}")
-            # Update or create stylesheet (styles.scss or styles.css)
+            # Update or create stylesheet (prefer styles.scss)
             styles_file = None
+            src_dir = os.path.join(project_dir, "src")
             for ext in ["scss", "css"]:
-                potential_file = os.path.join(project_dir, "src", f"styles.{ext}")
+                potential_file = os.path.join(src_dir, f"styles.{ext}")
                 if os.path.exists(potential_file):
                     styles_file = potential_file
                     break
             if not styles_file:
-                styles_file = os.path.join(project_dir, "src", "styles.scss")
+                styles_file = os.path.join(src_dir, "styles.scss")
+                logging.info(f"Creating {styles_file} as it does not exist")
                 with open(styles_file, "w") as f:
-                    f.write("")  # Create empty file if none exists
+                    f.write("")  # Create empty file
             tailwind_directives = """
 @tailwind base;
 @tailwind components;

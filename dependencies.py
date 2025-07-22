@@ -3,6 +3,7 @@ import subprocess
 import logging
 import platform
 import urllib.request
+import getpass
 
 
 class DependencyManager:
@@ -31,17 +32,36 @@ class DependencyManager:
             logging.info("Sudo access verified (non-interactive)")
             return True, ""
         except subprocess.CalledProcessError:
-            logging.error("Sudo requires password or is not available")
-            return (
-                False,
-                "Sudo requires password. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs",
-            )
+            logging.info("Sudo requires password or is not available")
+            return False, "Sudo requires password"
         except FileNotFoundError:
             logging.error("Sudo not installed")
             return (
                 False,
-                "Sudo is not installed. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs",
+                "Sudo is not installed. Run: sudo apt update && sudo apt install -y sudo",
             )
+
+    def run_with_sudo(self, command, error_message):
+        try:
+            password = getpass.getpass("Enter your sudo password: ")
+            full_command = ["sudo", "-S"] + command
+            process = subprocess.Popen(
+                full_command,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+            stdout, stderr = process.communicate(input=password + "\n")
+            if process.returncode != 0:
+                error = f"{error_message}: {stderr or stdout or 'Command failed without output'}"
+                logging.error(error)
+                return False, error
+            return True, ""
+        except Exception as e:
+            error = f"Unexpected error running sudo command: {str(e)}"
+            logging.error(error)
+            return False, error
 
     def check_node(self):
         try:
@@ -51,21 +71,22 @@ class DependencyManager:
             node_version = result.stdout.strip()
             logging.info(f"Node.js found: {node_version}")
             major_version = int(node_version.split(".")[0].lstrip("v"))
-            if 8 <= major_version <= 22:
+            minor_version = int(node_version.split(".")[1])
+            if major_version > 20 or (major_version == 20 and minor_version >= 11):
                 return True, ""
             else:
                 logging.warning(
-                    f"Node.js version {node_version} is not supported (required: 8-22)"
+                    f"Node.js version {node_version} is not supported (required: >=20.11.1)"
                 )
                 return (
                     False,
-                    f"Node.js version {node_version} is not supported. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs",
+                    f"Node.js version {node_version} is not supported. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt install -y nodejs",
                 )
         except (subprocess.CalledProcessError, FileNotFoundError):
             logging.info("Node.js not installed or not found in PATH")
             return (
                 False,
-                "Node.js is not installed. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs",
+                "Node.js is not installed. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt install -y nodejs",
             )
 
     def check_vue_cli(self):
@@ -105,22 +126,30 @@ class DependencyManager:
             return False, sudo_error
 
         try:
-            logging.info("Downloading Node.js 18.19.0 setup script")
+            logging.info("Downloading Node.js 20.11.1 setup script")
             script_path = "/tmp/nodesource_setup.sh"
             subprocess.run(
                 [
                     "curl",
                     "-fsSL",
-                    "https://deb.nodesource.com/setup_18.x",
+                    "https://deb.nodesource.com/setup_20.x",
                     "-o",
                     script_path,
                 ],
                 check=True,
             )
             logging.info("Running Node.js setup script")
-            subprocess.run(["sudo", "bash", script_path], check=True)
+            sudo_success, sudo_error = self.run_with_sudo(
+                ["bash", script_path], "Failed to run Node.js setup script"
+            )
+            if not sudo_success:
+                return False, sudo_error
             logging.info("Installing Node.js")
-            subprocess.run(["sudo", "apt", "install", "-y", "nodejs"], check=True)
+            sudo_success, sudo_error = self.run_with_sudo(
+                ["apt", "install", "-y", "nodejs"], "Failed to install Node.js"
+            )
+            if not sudo_success:
+                return False, sudo_error
             result = subprocess.run(
                 ["node", "--version"], capture_output=True, text=True, check=True
             )
@@ -140,48 +169,85 @@ class DependencyManager:
                 logging.info(f"Cleaned up {script_path}")
 
     def install_vue_cli(self):
-        try:
-            logging.info("Installing Vue CLI globally")
-            subprocess.run(
-                ["npm", "install", "-g", "@vue/cli"],
-                check=True,
-                capture_output=True,
-                text=True,
+        success, error = self.check_sudo()
+        if not success:
+            success, error = self.run_with_sudo(
+                ["npm", "install", "-g", "@vue/cli"], "Failed to install Vue CLI"
             )
+            if not success:
+                return False, error
+        else:
+            try:
+                logging.info("Installing Vue CLI globally")
+                subprocess.run(
+                    ["sudo", "npm", "install", "-g", "@vue/cli"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+            except subprocess.CalledProcessError as e:
+                error = f"Failed to install Vue CLI: {e.stderr or e.stdout or 'Command failed without output'}"
+                logging.error(error)
+                return False, error
+            except Exception as e:
+                error = f"Unexpected error installing Vue CLI: {str(e)}"
+                logging.error(error)
+                return False, error
+
+        try:
             result = subprocess.run(
                 ["vue", "--version"], capture_output=True, text=True, check=True
             )
             logging.info(f"Vue CLI installed: {result.stdout.strip()}")
             return True, ""
         except subprocess.CalledProcessError as e:
-            error = f"Failed to install Vue CLI: {e.stderr or e.stdout or 'Command failed without output'}"
+            error = f"Failed to verify Vue CLI installation: {e.stderr or e.stdout or 'Command failed without output'}"
             logging.error(error)
             return False, error
         except Exception as e:
-            error = f"Unexpected error installing Vue CLI: {str(e)}"
+            error = f"Unexpected error verifying Vue CLI installation: {str(e)}"
             logging.error(error)
             return False, error
 
     def install_angular_cli(self):
-        try:
-            logging.info("Installing Angular CLI globally")
-            subprocess.run(
+        success, error = self.check_sudo()
+        if not success:
+            success, error = self.run_with_sudo(
                 ["npm", "install", "-g", "@angular/cli"],
-                check=True,
-                capture_output=True,
-                text=True,
+                "Failed to install Angular CLI",
             )
+            if not success:
+                return False, error
+        else:
+            try:
+                logging.info("Installing Angular CLI globally")
+                subprocess.run(
+                    ["sudo", "npm", "install", "-g", "@angular/cli"],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+            except subprocess.CalledProcessError as e:
+                error = f"Failed to install Angular CLI: {e.stderr or e.stdout or 'Command failed without output'}"
+                logging.error(error)
+                return False, error
+            except Exception as e:
+                error = f"Unexpected error installing Angular CLI: {str(e)}"
+                logging.error(error)
+                return False, error
+
+        try:
             result = subprocess.run(
                 ["ng", "--version"], capture_output=True, text=True, check=True
             )
             logging.info(f"Angular CLI installed: {result.stdout.strip()}")
             return True, ""
         except subprocess.CalledProcessError as e:
-            error = f"Failed to install Angular CLI: {e.stderr or e.stdout or 'Command failed without output'}"
+            error = f"Failed to verify Angular CLI installation: {e.stderr or e.stdout or 'Command failed without output'}"
             logging.error(error)
             return False, error
         except Exception as e:
-            error = f"Unexpected error installing Angular CLI: {str(e)}"
+            error = f"Unexpected error verifying Angular CLI installation: {str(e)}"
             logging.error(error)
             return False, error
 

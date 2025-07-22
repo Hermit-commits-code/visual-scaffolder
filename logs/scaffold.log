@@ -466,3 +466,459 @@ CREATE home/joe/Desktop/repos/super-angular-project/public/favicon.ico (15086 by
 2025-07-22 06:33:08,478 - INFO - Created /home/joe/Desktop/repos/super-angular-project/postcss.config.js
 2025-07-22 06:33:08,478 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular-project/src/styles.css'
 2025-07-22 06:33:08,479 - ERROR - Project creation failed: Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular-project/src/styles.css'
+2025-07-22 06:41:38,950 - INFO - Validating project name: super-angular
+2025-07-22 06:41:38,951 - INFO - Project name validated successfully
+2025-07-22 06:41:40,122 - INFO - Opening directory chooser dialog
+2025-07-22 06:41:44,349 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:41:45,672 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:41:45,672 - INFO - Project path validated successfully
+2025-07-22 06:41:54,381 - INFO - Creating project: super-angular at /home/joe/Desktop/repos
+2025-07-22 06:41:54,382 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular
+2025-07-22 06:41:54,391 - INFO - Node.js found: v20.19.4
+2025-07-22 06:41:54,392 - INFO - Angular CLI not installed or not found in PATH
+2025-07-22 06:41:54,392 - INFO - Attempting to install Angular CLI
+2025-07-22 06:41:54,392 - INFO - Installing Angular CLI globally
+2025-07-22 06:42:01,424 - ERROR - Failed to install Angular CLI: npm error code EACCES
+npm error syscall mkdir
+npm error path /usr/lib/node_modules/@angular
+npm error errno -13
+npm error Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/@angular'
+npm error     at async mkdir (node:internal/fs/promises:858:10)
+npm error     at async /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:325:11)
+npm error     at async Arborist.reify (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:142:5)
+npm error     at async Install.exec (/usr/lib/node_modules/npm/lib/commands/install.js:150:5)
+npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error   code: 'EACCES',
+npm error   syscall: 'mkdir',
+npm error   path: '/usr/lib/node_modules/@angular'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It is likely you do not have the permissions to access this file as the current user
+npm error
+npm error If you believe this might be a permissions issue, please double-check the
+npm error permissions of the file and its containing directories, or try running
+npm error the command again as root/Administrator.
+npm error A complete log of this run can be found in: /home/joe/.npm/_logs/2025-07-22T10_41_54_455Z-debug-0.log
+
+2025-07-22 06:42:01,425 - ERROR - Project creation failed: Failed to install Angular CLI: npm error code EACCES
+npm error syscall mkdir
+npm error path /usr/lib/node_modules/@angular
+npm error errno -13
+npm error Error: EACCES: permission denied, mkdir '/usr/lib/node_modules/@angular'
+npm error     at async mkdir (node:internal/fs/promises:858:10)
+npm error     at async /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:325:11)
+npm error     at async Arborist.reify (/usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:142:5)
+npm error     at async Install.exec (/usr/lib/node_modules/npm/lib/commands/install.js:150:5)
+npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error   code: 'EACCES',
+npm error   syscall: 'mkdir',
+npm error   path: '/usr/lib/node_modules/@angular'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It is likely you do not have the permissions to access this file as the current user
+npm error
+npm error If you believe this might be a permissions issue, please double-check the
+npm error permissions of the file and its containing directories, or try running
+npm error the command again as root/Administrator.
+npm error A complete log of this run can be found in: /home/joe/.npm/_logs/2025-07-22T10_41_54_455Z-debug-0.log
+
+2025-07-22 06:49:24,314 - INFO - Validating project name: super-angular
+2025-07-22 06:49:24,316 - INFO - Project name validated successfully
+2025-07-22 06:49:25,335 - INFO - Opening directory chooser dialog
+2025-07-22 06:49:27,817 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:49:29,127 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:49:29,128 - INFO - Project path validated successfully
+2025-07-22 06:49:44,705 - INFO - Creating project: super-angular at /home/joe/Desktop/repos
+2025-07-22 06:49:44,706 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular
+2025-07-22 06:49:44,720 - INFO - Node.js found: v20.19.4
+2025-07-22 06:49:44,721 - INFO - Angular CLI not installed or not found in PATH
+2025-07-22 06:49:44,722 - INFO - Attempting to install Angular CLI
+2025-07-22 06:49:44,733 - INFO - Sudo requires password or is not available
+2025-07-22 06:50:45,770 - INFO - Angular CLI installed: 20.1.1
+2025-07-22 06:50:45,770 - INFO - Running command: ng new super-angular --directory /home/joe/Desktop/repos/super-angular --skip-git --style=css --routing=true --ssr=false --skip-tests=true in /home/joe/Desktop/repos
+2025-07-22 06:51:14,240 - INFO - Angular project created: CREATE home/joe/Desktop/repos/super-angular/README.md (1475 bytes)
+CREATE home/joe/Desktop/repos/super-angular/.editorconfig (314 bytes)
+CREATE home/joe/Desktop/repos/super-angular/.gitignore (587 bytes)
+CREATE home/joe/Desktop/repos/super-angular/angular.json (3065 bytes)
+CREATE home/joe/Desktop/repos/super-angular/package.json (1089 bytes)
+CREATE home/joe/Desktop/repos/super-angular/tsconfig.json (942 bytes)
+CREATE home/joe/Desktop/repos/super-angular/tsconfig.app.json (429 bytes)
+CREATE home/joe/Desktop/repos/super-angular/tsconfig.spec.json (408 bytes)
+CREATE home/joe/Desktop/repos/super-angular/.vscode/extensions.json (130 bytes)
+CREATE home/joe/Desktop/repos/super-angular/.vscode/launch.json (470 bytes)
+CREATE home/joe/Desktop/repos/super-angular/.vscode/tasks.json (938 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/main.ts (222 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/index.html (298 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/styles.css (80 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/app/app.css (0 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/app/app.ts (295 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/app/app.html (20122 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/app/app.config.ts (400 bytes)
+CREATE home/joe/Desktop/repos/super-angular/src/app/app.routes.ts (77 bytes)
+CREATE home/joe/Desktop/repos/super-angular/public/favicon.ico (15086 bytes)
+
+2025-07-22 06:51:14,240 - INFO - Installing ESLint with config google
+2025-07-22 06:51:24,201 - INFO - Created /home/joe/Desktop/repos/super-angular/.eslintrc.json with ESLint configuration
+2025-07-22 06:51:24,201 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 06:51:25,694 - INFO - Created /home/joe/Desktop/repos/super-angular/tailwind.config.js
+2025-07-22 06:51:25,694 - INFO - Created /home/joe/Desktop/repos/super-angular/postcss.config.js
+2025-07-22 06:51:25,694 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular/src/styles.css'
+2025-07-22 06:51:25,696 - ERROR - Project creation failed: Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular/src/styles.css'
+2025-07-22 06:51:25,707 - INFO - Creating project: super-angular at /home/joe/Desktop/repos
+2025-07-22 06:51:25,707 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular
+2025-07-22 06:51:25,711 - INFO - Node.js found: v20.19.4
+2025-07-22 06:51:26,120 - INFO - Angular CLI found: 20.1.1
+2025-07-22 06:51:26,121 - INFO - Running command: ng new super-angular --directory /home/joe/Desktop/repos/super-angular --skip-git --style=css --routing=true --ssr=false --skip-tests=true in /home/joe/Desktop/repos
+2025-07-22 06:51:28,375 - INFO - Angular project created: Nothing to be done.
+
+2025-07-22 06:51:28,375 - INFO - Installing ESLint with config google
+2025-07-22 06:51:29,950 - INFO - Created /home/joe/Desktop/repos/super-angular/.eslintrc.json with ESLint configuration
+2025-07-22 06:51:29,951 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 06:51:30,931 - INFO - Created /home/joe/Desktop/repos/super-angular/tailwind.config.js
+2025-07-22 06:51:30,931 - INFO - Created /home/joe/Desktop/repos/super-angular/postcss.config.js
+2025-07-22 06:51:30,931 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular/src/styles.css'
+2025-07-22 06:51:30,931 - ERROR - Project creation failed: Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular/src/styles.css'
+2025-07-22 06:54:08,572 - INFO - Validating project name: super-vue
+2025-07-22 06:54:08,574 - INFO - Project name validated successfully
+2025-07-22 06:54:09,719 - INFO - Opening directory chooser dialog
+2025-07-22 06:54:12,849 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:54:14,448 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:54:14,449 - INFO - Project path validated successfully
+2025-07-22 06:54:21,088 - INFO - Creating project: super-vue at /home/joe/Desktop/repos
+2025-07-22 06:54:21,089 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue
+2025-07-22 06:54:21,104 - INFO - Node.js found: v20.19.4
+2025-07-22 06:54:21,106 - INFO - Vue CLI not installed or not found in PATH
+2025-07-22 06:54:21,106 - INFO - Attempting to install Vue CLI
+2025-07-22 06:54:21,132 - INFO - Sudo access verified (non-interactive)
+2025-07-22 06:54:21,132 - INFO - Installing Vue CLI globally
+2025-07-22 06:54:44,152 - INFO - Vue CLI installed: @vue/cli 5.0.8
+2025-07-22 06:54:44,152 - INFO - Running command: vue create super-vue --default --force --packageManager=npm in /home/joe/Desktop/repos
+2025-07-22 06:55:11,239 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/super-vue.
+🗃  Initializing git repository...
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 20s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project super-vue.
+👉  Get started with the following commands:
+
+ $ cd super-vue
+ $ npm run serve
+
+
+2025-07-22 06:55:11,239 - INFO - Installing TypeScript dependencies
+2025-07-22 06:55:13,759 - INFO - Installing ESLint with config prettier
+2025-07-22 06:55:15,519 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 06:55:19,590 - INFO - Created /home/joe/Desktop/repos/super-vue/tailwind.config.js
+2025-07-22 06:55:19,591 - INFO - Created /home/joe/Desktop/repos/super-vue/postcss.config.js
+2025-07-22 06:55:19,591 - INFO - Created /home/joe/Desktop/repos/super-vue/src/assets/main.css with Tailwind directives
+2025-07-22 06:55:19,591 - INFO - Installing Prettier
+2025-07-22 06:55:21,461 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/super-vue/.eslintrc.json
+2025-07-22 06:55:21,461 - INFO - Applied Prettier config to /home/joe/Desktop/repos/super-vue/.prettierrc
+2025-07-22 06:55:21,461 - INFO - Installing Tailwind CSS manually...
+2025-07-22 06:55:21,461 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 06:55:21,461 - INFO - Initializing Git repository...
+2025-07-22 06:55:21,461 - INFO - Git already initialized
+2025-07-22 06:55:21,461 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/super-vue/.scaffold.json
+2025-07-22 06:55:21,462 - INFO - Project 'super-vue' created successfully
+2025-07-22 06:55:21,470 - INFO - Creating project: super-vue at /home/joe/Desktop/repos
+2025-07-22 06:55:21,470 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue
+2025-07-22 06:55:21,474 - INFO - Node.js found: v20.19.4
+2025-07-22 06:55:21,594 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 06:55:21,594 - INFO - Running command: vue create super-vue --default --force --packageManager=npm in /home/joe/Desktop/repos
+2025-07-22 06:55:37,933 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/super-vue.
+🗃  Initializing git repository...
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 10s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 3s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project super-vue.
+👉  Get started with the following commands:
+
+ $ cd super-vue
+ $ npm run serve
+
+
+2025-07-22 06:55:37,934 - INFO - Installing TypeScript dependencies
+2025-07-22 06:55:39,995 - INFO - Installing ESLint with config prettier
+2025-07-22 06:55:42,111 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 06:55:44,792 - INFO - Created /home/joe/Desktop/repos/super-vue/tailwind.config.js
+2025-07-22 06:55:44,792 - INFO - Created /home/joe/Desktop/repos/super-vue/postcss.config.js
+2025-07-22 06:55:44,792 - INFO - Created /home/joe/Desktop/repos/super-vue/src/assets/main.css with Tailwind directives
+2025-07-22 06:55:44,793 - INFO - Installing Prettier
+2025-07-22 06:55:46,655 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/super-vue/.eslintrc.json
+2025-07-22 06:55:46,655 - INFO - Applied Prettier config to /home/joe/Desktop/repos/super-vue/.prettierrc
+2025-07-22 06:55:46,655 - INFO - Installing Tailwind CSS manually...
+2025-07-22 06:55:46,656 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 06:55:46,656 - INFO - Initializing Git repository...
+2025-07-22 06:55:46,656 - INFO - Git already initialized
+2025-07-22 06:55:46,656 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/super-vue/.scaffold.json
+2025-07-22 06:55:46,656 - INFO - Project 'super-vue' created successfully
+2025-07-22 07:04:10,718 - INFO - Validating project name: super-angular
+2025-07-22 07:04:10,720 - INFO - Project name validated successfully
+2025-07-22 07:04:11,884 - INFO - Opening directory chooser dialog
+2025-07-22 07:04:15,625 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:04:17,318 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:04:17,319 - INFO - Project path validated successfully
+2025-07-22 07:04:28,698 - INFO - Creating project: super-angular at /home/joe/Desktop/repos
+2025-07-22 07:04:28,699 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular
+2025-07-22 07:04:28,714 - INFO - Node.js found: v20.19.4
+2025-07-22 07:04:29,103 - INFO - Angular CLI found: 20.1.1
+2025-07-22 07:04:29,103 - INFO - Running command: ng new super-angular --directory /home/joe/Desktop/repos/super-angular --skip-git --style=scss --routing=true --ssr=false --skip-tests=true in /home/joe/Desktop/repos
+2025-07-22 07:04:29,953 - ERROR - Angular project creation failed: A merge conflicted on path "/home/joe/Desktop/repos/super-angular/angular.json".
+
+2025-07-22 07:04:29,953 - ERROR - Project creation failed: Angular project creation failed: A merge conflicted on path "/home/joe/Desktop/repos/super-angular/angular.json".
+
+2025-07-22 07:06:45,409 - INFO - Validating project name: super-angular
+2025-07-22 07:06:45,411 - INFO - Project name validated successfully
+2025-07-22 07:06:46,504 - INFO - Opening directory chooser dialog
+2025-07-22 07:06:49,963 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:06:51,011 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:06:51,012 - INFO - Project path validated successfully
+2025-07-22 07:06:58,966 - INFO - Creating project: super-angular at /home/joe/Desktop/repos
+2025-07-22 07:06:58,967 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular
+2025-07-22 07:06:58,982 - INFO - Node.js found: v20.19.4
+2025-07-22 07:06:59,373 - INFO - Angular CLI found: 20.1.1
+2025-07-22 07:06:59,373 - INFO - Running command: ng new super-angular --directory /home/joe/Desktop/repos/super-angular --skip-git --style=scss --routing=true --ssr=false --skip-tests=true in /home/joe/Desktop/repos
+2025-07-22 07:07:00,180 - ERROR - Angular project creation failed: A merge conflicted on path "/home/joe/Desktop/repos/super-angular/angular.json".
+
+2025-07-22 07:07:00,180 - ERROR - Project creation failed: Angular project creation failed: A merge conflicted on path "/home/joe/Desktop/repos/super-angular/angular.json".
+
+2025-07-22 07:12:10,679 - INFO - Validating project name: super-vue-project
+2025-07-22 07:12:10,681 - INFO - Project name validated successfully
+2025-07-22 07:12:11,752 - INFO - Opening directory chooser dialog
+2025-07-22 07:12:15,853 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:12:17,249 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:12:17,249 - INFO - Project path validated successfully
+2025-07-22 07:12:24,295 - INFO - Creating project: super-vue-project at /home/joe/Desktop/repos
+2025-07-22 07:12:24,295 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-22 07:12:24,310 - INFO - Node.js found: v20.19.4
+2025-07-22 07:12:24,449 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 07:12:24,449 - INFO - Removing existing project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-22 07:12:24,449 - INFO - Successfully removed /home/joe/Desktop/repos/super-vue-project
+2025-07-22 07:12:24,449 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-22 07:12:24,449 - INFO - Running command: vue create super-vue-project --default --force --packageManager=npm --eslint in /home/joe/Desktop/repos
+2025-07-22 07:12:24,565 - ERROR - Vue.js project creation failed: Usage: vue create [options] <app-name>
+
+create a new project powered by vue-cli-service
+
+Options:
+  -p, --preset <presetName>       Skip prompts and use saved or remote preset
+  -d, --default                   Skip prompts and use default preset
+  -i, --inlinePreset <json>       Skip prompts and use inline JSON string as
+                                  preset
+  -m, --packageManager <command>  Use specified npm client when installing
+                                  dependencies
+  -r, --registry <url>            Use specified npm registry when installing
+                                  dependencies (only for npm)
+  -g, --git [message]             Force git initialization with initial commit
+                                  message
+  -n, --no-git                    Skip git initialization
+  -f, --force                     Overwrite target directory if it exists
+  --merge                         Merge target directory if it exists
+  -c, --clone                     Use git clone when fetching remote preset
+  -x, --proxy <proxyUrl>          Use specified proxy when creating project
+  -b, --bare                      Scaffold project without beginner
+                                  instructions
+  --skipGetStarted                Skip displaying "Get started" instructions
+  -h, --help                      display help for command
+
+  Unknown option --eslint.
+
+
+2025-07-22 07:12:24,565 - ERROR - Project creation failed: Vue.js project creation failed: Usage: vue create [options] <app-name>
+
+create a new project powered by vue-cli-service
+
+Options:
+  -p, --preset <presetName>       Skip prompts and use saved or remote preset
+  -d, --default                   Skip prompts and use default preset
+  -i, --inlinePreset <json>       Skip prompts and use inline JSON string as
+                                  preset
+  -m, --packageManager <command>  Use specified npm client when installing
+                                  dependencies
+  -r, --registry <url>            Use specified npm registry when installing
+                                  dependencies (only for npm)
+  -g, --git [message]             Force git initialization with initial commit
+                                  message
+  -n, --no-git                    Skip git initialization
+  -f, --force                     Overwrite target directory if it exists
+  --merge                         Merge target directory if it exists
+  -c, --clone                     Use git clone when fetching remote preset
+  -x, --proxy <proxyUrl>          Use specified proxy when creating project
+  -b, --bare                      Scaffold project without beginner
+                                  instructions
+  --skipGetStarted                Skip displaying "Get started" instructions
+  -h, --help                      display help for command
+
+  Unknown option --eslint.
+
+
+2025-07-22 07:28:43,809 - INFO - Validating project name: another-vue
+2025-07-22 07:28:43,811 - INFO - Project name validated successfully
+2025-07-22 07:28:45,178 - INFO - Opening directory chooser dialog
+2025-07-22 07:28:47,740 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:28:50,524 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:28:50,525 - INFO - Project path validated successfully
+2025-07-22 07:28:56,192 - INFO - Creating project: another-vue at /home/joe/Desktop/repos
+2025-07-22 07:28:56,193 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:28:56,201 - INFO - Node.js found: v20.19.4
+2025-07-22 07:28:56,317 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 07:28:56,317 - INFO - Removing existing project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:28:56,317 - INFO - Successfully removed /home/joe/Desktop/repos/another-vue
+2025-07-22 07:28:56,318 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:28:56,318 - INFO - Running command: vue create another-vue --default --force --packageManager=npm --no-git in /home/joe/Desktop/repos
+2025-07-22 07:29:29,568 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/another-vue.
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 26s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project another-vue.
+👉  Get started with the following commands:
+
+ $ cd another-vue
+ $ npm run serve
+
+
+2025-07-22 07:29:29,568 - INFO - Project directory contents: ['public', 'README.md', 'vue.config.js', 'jsconfig.json', '.gitignore', 'node_modules', 'babel.config.js', 'package-lock.json', 'src', 'package.json']
+2025-07-22 07:29:29,568 - INFO - src directory contents: ['components', 'main.js', 'assets', 'App.vue']
+2025-07-22 07:29:29,568 - INFO - Installing ESLint with config prettier
+2025-07-22 07:29:32,196 - INFO - Created /home/joe/Desktop/repos/another-vue/.eslintrc.json with ESLint configuration
+2025-07-22 07:29:32,196 - INFO - Running ESLint auto-fix on src/ files
+2025-07-22 07:29:32,343 - WARNING - ESLint auto-fix failed: npm error Missing script: "eslint"
+npm error
+npm error Did you mean this?
+npm error   npm run lint # run the "lint" package script
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: /home/joe/.npm/_logs/2025-07-22T11_29_32_264Z-debug-0.log
+
+2025-07-22 07:29:32,343 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 07:29:34,212 - INFO - Created /home/joe/Desktop/repos/another-vue/tailwind.config.js
+2025-07-22 07:29:34,212 - INFO - Created /home/joe/Desktop/repos/another-vue/postcss.config.js
+2025-07-22 07:29:34,212 - INFO - Created/Updated /home/joe/Desktop/repos/another-vue/src/assets/main.css with Tailwind directives
+2025-07-22 07:29:34,212 - INFO - Installing Prettier
+2025-07-22 07:29:36,029 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/another-vue/.eslintrc.json
+2025-07-22 07:29:36,030 - INFO - Applied Prettier config to /home/joe/Desktop/repos/another-vue/.prettierrc
+2025-07-22 07:29:36,030 - INFO - Installing Tailwind CSS manually...
+2025-07-22 07:29:36,030 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 07:29:36,030 - INFO - Initializing Git repository...
+2025-07-22 07:29:36,035 - INFO - Initialized Git repository
+2025-07-22 07:29:36,035 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/another-vue/.scaffold.json
+2025-07-22 07:29:36,035 - INFO - Project 'another-vue' created successfully
