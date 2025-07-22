@@ -2,6 +2,7 @@ import os
 import subprocess
 import logging
 import json
+import shutil
 from dependencies import DependencyManager
 
 
@@ -16,8 +17,8 @@ def create_vue_project(
     use_prettier,
     prettier_config,
     auto_install,
-    use_standalone,
-    use_tests,
+    use_router,
+    use_vuex,
     package_manager,
     use_stylelint,
     env_vars,
@@ -33,7 +34,19 @@ def create_vue_project(
 
     try:
         project_dir = os.path.join(project_path, project_name)
+        # Remove existing project directory to avoid conflicts
+        if os.path.exists(project_dir):
+            logging.info(f"Removing existing project directory: {project_dir}")
+            try:
+                shutil.rmtree(project_dir)
+                logging.info(f"Successfully removed {project_dir}")
+            except Exception as e:
+                logging.error(
+                    f"Failed to remove existing directory {project_dir}: {str(e)}"
+                )
+                return False, f"Failed to remove existing directory: {str(e)}"
         os.makedirs(project_dir, exist_ok=True)
+        logging.info(f"Created project directory: {project_dir}")
 
         # Construct vue create command
         cmd = [
@@ -43,14 +56,31 @@ def create_vue_project(
             "--default",
             "--force",
             f"--packageManager={package_manager}",
+            "--no-git",
         ]
+        if use_typescript:
+            cmd.append("--typescript")
+        if use_router:
+            cmd.append("--router")
+        if use_vuex:
+            cmd.append("--vuex")
         logging.info(f"Running command: {' '.join(cmd)} in {project_path}")
         result = subprocess.run(
             cmd, cwd=project_path, check=True, capture_output=True, text=True
         )
         logging.info(f"Vue.js project created: {result.stdout}")
 
-        # Post-creation configuration
+        # Log project directory contents for debugging
+        dir_contents = os.listdir(project_dir)
+        logging.info(f"Project directory contents: {dir_contents}")
+        src_dir = os.path.join(project_dir, "src")
+        if os.path.exists(src_dir):
+            src_contents = os.listdir(src_dir)
+            logging.info(f"src directory contents: {src_contents}")
+        else:
+            logging.error("src directory not found")
+            return False, "Vue project creation failed: src directory not found"
+
         if use_typescript:
             logging.info("Installing TypeScript dependencies")
             subprocess.run(
@@ -58,6 +88,7 @@ def create_vue_project(
                 cwd=project_dir,
                 check=True,
             )
+
         if use_eslint:
             logging.info(f"Installing ESLint with config {eslint_config}")
             subprocess.run(
@@ -67,10 +98,45 @@ def create_vue_project(
                     "--save-dev",
                     "eslint",
                     f"eslint-config-{eslint_config}",
+                    "eslint-plugin-vue",
                 ],
                 cwd=project_dir,
                 check=True,
             )
+            # Create .eslintrc.json
+            eslint_config_json = {
+                "env": {"browser": True, "es2021": True},
+                "extends": [
+                    f"eslint-config-{eslint_config}",
+                    "plugin:vue/vue3-essential",
+                ],
+                "parserOptions": {"ecmaVersion": 12, "sourceType": "module"},
+                "plugins": ["vue"],
+                "rules": custom_eslint_rules.get("rules", {}),
+            }
+            eslint_file = os.path.join(project_dir, ".eslintrc.json")
+            with open(eslint_file, "w") as f:
+                json.dump(eslint_config_json, f, indent=2)
+            logging.info(f"Created {eslint_file} with ESLint configuration")
+            # Run eslint --fix to auto-correct linting issues
+            logging.info("Running ESLint auto-fix on src/ files")
+            try:
+                subprocess.run(
+                    [package_manager, "run", "eslint", "src/**/*.{js,ts,vue}", "--fix"],
+                    cwd=project_dir,
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                )
+                logging.info("ESLint auto-fix completed successfully")
+            except subprocess.CalledProcessError as e:
+                logging.warning(
+                    f"ESLint auto-fix failed: {e.stderr or e.stdout or 'No additional error details'}"
+                )
+                # Continue despite ESLint fix failure, as it’s not critical
+            except Exception as e:
+                logging.warning(f"Unexpected error during ESLint auto-fix: {str(e)}")
+
         if use_tailwind:
             logging.info("Installing Tailwind CSS with PostCSS plugin")
             subprocess.run(
@@ -78,7 +144,7 @@ def create_vue_project(
                     package_manager,
                     "install",
                     "--save-dev",
-                    "@tailwindcss/postcss",
+                    "tailwindcss",
                     "postcss",
                     "autoprefixer",
                 ],
@@ -96,30 +162,24 @@ def create_vue_project(
                 f.write(f"module.exports = {json.dumps(tailwind_config, indent=2)}")
             logging.info(f"Created {tailwind_config_file}")
             # Manually create postcss.config.js
-            postcss_config = {
-                "plugins": {"@tailwindcss/postcss": {}, "autoprefixer": {}}
-            }
+            postcss_config = {"plugins": {"tailwindcss": {}, "autoprefixer": {}}}
             postcss_config_file = os.path.join(project_dir, "postcss.config.js")
             with open(postcss_config_file, "w") as f:
                 f.write(f"module.exports = {json.dumps(postcss_config, indent=2)}")
             logging.info(f"Created {postcss_config_file}")
-            # Update main.css or equivalent to include Tailwind directives
+            # Update or create src/assets/main.css
             css_file = os.path.join(project_dir, "src", "assets", "main.css")
             tailwind_directives = """
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 """
-            if os.path.exists(css_file):
-                with open(css_file, "a") as f:
-                    f.write(tailwind_directives)
-                logging.info(f"Appended Tailwind directives to {css_file}")
-            else:
-                css_dir = os.path.dirname(css_file)
-                os.makedirs(css_dir, exist_ok=True)
-                with open(css_file, "w") as f:
-                    f.write(tailwind_directives)
-                logging.info(f"Created {css_file} with Tailwind directives")
+            css_dir = os.path.dirname(css_file)
+            os.makedirs(css_dir, exist_ok=True)
+            with open(css_file, "w") as f:
+                f.write(tailwind_directives)
+            logging.info(f"Created/Updated {css_file} with Tailwind directives")
+
         if use_prettier:
             logging.info("Installing Prettier")
             subprocess.run(
@@ -128,20 +188,39 @@ def create_vue_project(
                 check=True,
             )
 
+        if use_stylelint:
+            logging.info("Installing Stylelint")
+            subprocess.run(
+                [
+                    package_manager,
+                    "install",
+                    "--save-dev",
+                    "stylelint",
+                    "stylelint-config-standard",
+                ],
+                cwd=project_dir,
+                check=True,
+            )
+            stylelint_config = {
+                "extends": "stylelint-config-standard",
+                "rules": {"indentation": 2, "number-leading-zero": "always"},
+            }
+            stylelint_file = os.path.join(project_dir, ".stylelintrc.json")
+            with open(stylelint_file, "w") as f:
+                json.dump(stylelint_config, f, indent=2)
+            logging.info(f"Created {stylelint_file}")
+
         # Apply custom ESLint rules
         if use_eslint and custom_eslint_rules:
             try:
                 if not isinstance(custom_eslint_rules, dict):
                     raise ValueError("Custom ESLint rules must be a valid JSON object")
-                eslint_config = {
-                    "env": {"browser": True, "es2021": True},
-                    "extends": [f"eslint-config-{eslint_config}"],
-                    "parserOptions": {"ecmaVersion": 12, "sourceType": "module"},
-                    "rules": custom_eslint_rules.get("rules", {}),
-                }
                 eslint_file = os.path.join(project_dir, ".eslintrc.json")
+                with open(eslint_file, "r") as f:
+                    eslint_config_json = json.load(f)
+                eslint_config_json["rules"].update(custom_eslint_rules.get("rules", {}))
                 with open(eslint_file, "w") as f:
-                    json.dump(eslint_config, f, indent=2)
+                    json.dump(eslint_config_json, f, indent=2)
                 logging.info(f"Applied custom ESLint rules to {eslint_file}")
             except ValueError as e:
                 logging.error(f"Invalid ESLint configuration: {str(e)}")
