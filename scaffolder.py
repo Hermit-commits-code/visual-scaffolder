@@ -3,6 +3,7 @@ import logging
 from frameworks.vue import create_vue_project
 from frameworks.tailwind import install_tailwind  # <-- New import
 from utils.git_manager import init_git_repo
+from utils.scaffold_tracker import write_scaffold_metadata
 
 
 class ProjectScaffolder:
@@ -62,6 +63,9 @@ class ProjectScaffolder:
                 init_git_repo(
                     full_project_path, project_type="node"
                 )  # You can auto-detect later
+
+            # Write scaffold metadata
+            write_scaffold_metadata(full_project_path, config)
 
             return True, ""
 

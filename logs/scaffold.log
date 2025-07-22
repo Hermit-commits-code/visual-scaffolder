@@ -379,3 +379,17 @@ Run `npm audit` for details.
 2025-07-21 12:57:52,530 - INFO - Internet connection verified
 2025-07-21 12:57:52,551 - ERROR - Sudo requires password or is not available
 2025-07-21 12:57:52,552 - ERROR - Project creation failed: Sudo requires password. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs
+2025-07-22 05:06:50,726 - INFO - Validating project name: super-vue-project
+2025-07-22 05:06:50,727 - INFO - Project name validated successfully
+2025-07-22 05:06:52,442 - INFO - Opening directory chooser dialog
+2025-07-22 05:06:59,086 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 05:07:00,361 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 05:07:00,362 - INFO - Project path validated successfully
+2025-07-22 05:07:09,183 - INFO - Creating project: super-vue-project at /home/joe/Desktop/repos
+2025-07-22 05:07:09,183 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-project
+2025-07-22 05:07:09,192 - INFO - Node.js found: v24.4.1
+2025-07-22 05:07:09,192 - WARNING - Node.js version v24.4.1 is not supported (required: 8-22)
+2025-07-22 05:07:09,192 - INFO - Attempting to install Node.js
+2025-07-22 05:07:09,371 - INFO - Internet connection verified
+2025-07-22 05:07:09,403 - ERROR - Sudo requires password or is not available
+2025-07-22 05:07:09,405 - ERROR - Project creation failed: Sudo requires password. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs
