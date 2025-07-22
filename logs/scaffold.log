@@ -922,3 +922,348 @@ npm error A complete log of this run can be found in: /home/joe/.npm/_logs/2025-
 2025-07-22 07:29:36,035 - INFO - Initialized Git repository
 2025-07-22 07:29:36,035 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/another-vue/.scaffold.json
 2025-07-22 07:29:36,035 - INFO - Project 'another-vue' created successfully
+2025-07-22 07:35:32,818 - INFO - Validating project name: another-vue
+2025-07-22 07:35:32,820 - INFO - Project name validated successfully
+2025-07-22 07:35:33,725 - INFO - Opening directory chooser dialog
+2025-07-22 07:35:37,405 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:35:38,856 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:35:38,857 - INFO - Project path validated successfully
+2025-07-22 07:35:55,537 - INFO - Creating project: another-vue at /home/joe/Desktop/repos
+2025-07-22 07:35:55,538 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:35:55,551 - INFO - Node.js found: v20.19.4
+2025-07-22 07:35:55,688 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 07:35:55,688 - INFO - Removing existing project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:35:55,688 - INFO - Successfully removed /home/joe/Desktop/repos/another-vue
+2025-07-22 07:35:55,688 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:35:55,689 - INFO - Running command: vue create another-vue --default --force --packageManager=npm --no-git in /home/joe/Desktop/repos
+2025-07-22 07:36:28,574 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/another-vue.
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 25s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project another-vue.
+👉  Get started with the following commands:
+
+ $ cd another-vue
+ $ npm run serve
+
+
+2025-07-22 07:36:28,574 - INFO - Project directory contents: ['public', 'README.md', 'vue.config.js', 'jsconfig.json', '.gitignore', 'node_modules', 'babel.config.js', 'package-lock.json', 'src', 'package.json']
+2025-07-22 07:36:28,574 - INFO - src directory contents: ['components', 'main.js', 'assets', 'App.vue']
+2025-07-22 07:36:28,574 - INFO - Updated /home/joe/Desktop/repos/another-vue/package.json with lint script
+2025-07-22 07:36:28,574 - INFO - Installing ESLint with config prettier
+2025-07-22 07:36:30,566 - INFO - Created /home/joe/Desktop/repos/another-vue/.eslintrc.json with ESLint configuration
+2025-07-22 07:36:30,566 - INFO - Running ESLint auto-fix on src/ files
+2025-07-22 07:36:31,571 - INFO - ESLint auto-fix completed successfully
+2025-07-22 07:36:31,571 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 07:36:33,504 - INFO - Created /home/joe/Desktop/repos/another-vue/tailwind.config.js
+2025-07-22 07:36:33,504 - INFO - Created /home/joe/Desktop/repos/another-vue/postcss.config.js
+2025-07-22 07:36:33,504 - INFO - Created /home/joe/Desktop/repos/another-vue/vue.config.js
+2025-07-22 07:36:33,504 - INFO - Created/Updated /home/joe/Desktop/repos/another-vue/src/assets/main.css with Tailwind directives
+2025-07-22 07:36:33,504 - INFO - Added CSS import to /home/joe/Desktop/repos/another-vue/src/main.js
+2025-07-22 07:36:33,504 - INFO - Installing Prettier
+2025-07-22 07:36:35,246 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/another-vue/.eslintrc.json
+2025-07-22 07:36:35,246 - INFO - Applied Prettier config to /home/joe/Desktop/repos/another-vue/.prettierrc
+2025-07-22 07:36:35,246 - INFO - Installing Tailwind CSS manually...
+2025-07-22 07:36:35,246 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 07:36:35,246 - INFO - Initializing Git repository...
+2025-07-22 07:36:35,249 - INFO - Initialized Git repository
+2025-07-22 07:36:35,249 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/another-vue/.scaffold.json
+2025-07-22 07:36:35,250 - INFO - Project 'another-vue' created successfully
+2025-07-22 07:54:54,545 - INFO - Validating project name: another-vue
+2025-07-22 07:54:54,546 - INFO - Project name validated successfully
+2025-07-22 07:54:55,852 - INFO - Opening directory chooser dialog
+2025-07-22 07:54:59,443 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 07:55:00,588 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 07:55:00,589 - INFO - Project path validated successfully
+2025-07-22 07:55:06,665 - INFO - Creating project: another-vue at /home/joe/Desktop/repos
+2025-07-22 07:55:06,666 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:55:06,679 - INFO - Node.js found: v20.19.4
+2025-07-22 07:55:06,818 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 07:55:06,818 - INFO - Removing existing project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:55:06,818 - INFO - Successfully removed /home/joe/Desktop/repos/another-vue
+2025-07-22 07:55:06,819 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 07:55:06,819 - INFO - Running command: vue create another-vue --default --force --packageManager=npm --no-git in /home/joe/Desktop/repos
+2025-07-22 07:55:38,326 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/another-vue.
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 25s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project another-vue.
+👉  Get started with the following commands:
+
+ $ cd another-vue
+ $ npm run serve
+
+
+2025-07-22 07:55:38,326 - INFO - Project directory contents: ['public', 'README.md', 'vue.config.js', 'jsconfig.json', '.gitignore', 'node_modules', 'babel.config.js', 'package-lock.json', 'src', 'package.json']
+2025-07-22 07:55:38,327 - INFO - src directory contents: ['components', 'main.js', 'assets', 'App.vue']
+2025-07-22 07:55:38,327 - INFO - Updated /home/joe/Desktop/repos/another-vue/package.json with lint script
+2025-07-22 07:55:38,327 - INFO - Installing ESLint with config prettier
+2025-07-22 07:55:40,345 - INFO - ESLint installation: 
+added 1 package, and audited 917 packages in 2s
+
+118 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 07:55:40,346 - INFO - Created /home/joe/Desktop/repos/another-vue/.eslintrc.json with ESLint configuration
+2025-07-22 07:55:40,346 - INFO - Running ESLint auto-fix on src/ files
+2025-07-22 07:55:41,220 - INFO - ESLint auto-fix completed: 
+2025-07-22 07:55:41,220 - INFO - Installing Tailwind CSS with PostCSS plugins
+2025-07-22 07:55:43,304 - INFO - Tailwind/PostCSS installation: 
+added 4 packages, and audited 921 packages in 2s
+
+118 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 07:55:43,304 - INFO - Created /home/joe/Desktop/repos/another-vue/tailwind.config.js
+2025-07-22 07:55:43,304 - INFO - Created /home/joe/Desktop/repos/another-vue/vue.config.js
+2025-07-22 07:55:43,305 - INFO - Created/Updated /home/joe/Desktop/repos/another-vue/src/assets/main.css with Tailwind directives
+2025-07-22 07:55:43,305 - INFO - Added CSS import to /home/joe/Desktop/repos/another-vue/src/main.js
+2025-07-22 07:55:43,305 - INFO - Installing Prettier
+2025-07-22 07:55:45,025 - INFO - Prettier installation: 
+added 1 package, changed 1 package, and audited 922 packages in 2s
+
+119 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 07:55:45,025 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/another-vue/.eslintrc.json
+2025-07-22 07:55:45,025 - INFO - Applied Prettier config to /home/joe/Desktop/repos/another-vue/.prettierrc
+2025-07-22 07:55:45,025 - INFO - Installing Tailwind CSS manually...
+2025-07-22 07:55:45,025 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 07:55:45,025 - INFO - Initializing Git repository...
+2025-07-22 07:55:45,028 - INFO - Initialized Git repository
+2025-07-22 07:55:45,028 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/another-vue/.scaffold.json
+2025-07-22 07:55:45,029 - INFO - Project 'another-vue' created successfully
+2025-07-22 07:59:59,774 - INFO - Validating project name: 
+2025-07-22 07:59:59,774 - ERROR - Project name is empty
+2025-07-22 08:00:06,451 - INFO - Validating project name: another-vue
+2025-07-22 08:00:06,451 - INFO - Project name validated successfully
+2025-07-22 08:00:07,981 - INFO - Opening directory chooser dialog
+2025-07-22 08:00:10,892 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 08:00:58,994 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 08:00:58,995 - INFO - Project path validated successfully
+2025-07-22 08:01:06,195 - INFO - Creating project: another-vue at /home/joe/Desktop/repos
+2025-07-22 08:01:06,196 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 08:01:06,209 - INFO - Node.js found: v20.19.4
+2025-07-22 08:01:06,342 - INFO - Vue CLI found: @vue/cli 5.0.8
+2025-07-22 08:01:06,342 - INFO - Removing existing project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 08:01:06,342 - INFO - Successfully removed /home/joe/Desktop/repos/another-vue
+2025-07-22 08:01:06,343 - INFO - Created project directory: /home/joe/Desktop/repos/another-vue
+2025-07-22 08:01:06,343 - INFO - Running command: vue create another-vue --default --force --packageManager=npm --no-git in /home/joe/Desktop/repos
+2025-07-22 08:01:39,199 - INFO - Vue.js project created: ✨  Creating project in /home/joe/Desktop/repos/another-vue.
+⚙️  Installing CLI plugins. This might take a while...
+
+
+added 829 packages, and audited 830 packages in 26s
+
+105 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+🚀  Invoking generators...
+📦  Installing additional dependencies...
+
+
+added 86 packages, and audited 916 packages in 4s
+
+117 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+⚓  Running completion hooks...
+
+📄  Generating README.md...
+
+🎉  Successfully created project another-vue.
+👉  Get started with the following commands:
+
+ $ cd another-vue
+ $ npm run serve
+
+
+2025-07-22 08:01:39,199 - INFO - Project directory contents: ['public', 'README.md', 'vue.config.js', 'jsconfig.json', '.gitignore', 'node_modules', 'babel.config.js', 'package-lock.json', 'src', 'package.json']
+2025-07-22 08:01:39,199 - INFO - src directory contents: ['components', 'main.js', 'assets', 'App.vue']
+2025-07-22 08:01:39,199 - INFO - Updated /home/joe/Desktop/repos/another-vue/package.json with lint script
+2025-07-22 08:01:39,200 - INFO - Installing ESLint with config prettier
+2025-07-22 08:01:41,364 - INFO - ESLint installation: 
+added 1 package, and audited 917 packages in 2s
+
+118 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 08:01:41,365 - INFO - Created /home/joe/Desktop/repos/another-vue/.eslintrc.json with ESLint configuration
+2025-07-22 08:01:41,365 - INFO - Running ESLint auto-fix on src/ files
+2025-07-22 08:01:42,244 - INFO - ESLint auto-fix completed: 
+2025-07-22 08:01:42,245 - INFO - Installing Tailwind CSS with PostCSS plugins
+2025-07-22 08:01:46,219 - INFO - Tailwind/PostCSS installation: 
+added 22 packages, and audited 939 packages in 4s
+
+122 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 08:01:46,219 - INFO - Created /home/joe/Desktop/repos/another-vue/tailwind.config.js
+2025-07-22 08:01:46,220 - INFO - Created /home/joe/Desktop/repos/another-vue/vue.config.js
+2025-07-22 08:01:46,220 - INFO - Created/Updated /home/joe/Desktop/repos/another-vue/src/assets/main.css with Tailwind directives
+2025-07-22 08:01:46,220 - INFO - Added CSS import to /home/joe/Desktop/repos/another-vue/src/main.js
+2025-07-22 08:01:46,220 - INFO - Installing Prettier
+2025-07-22 08:01:48,093 - INFO - Prettier installation: 
+added 3 packages, changed 1 package, and audited 942 packages in 2s
+
+124 packages are looking for funding
+  run `npm fund` for details
+
+12 vulnerabilities (8 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+2025-07-22 08:01:48,093 - INFO - Applied custom ESLint rules to /home/joe/Desktop/repos/another-vue/.eslintrc.json
+2025-07-22 08:01:48,093 - INFO - Applied Prettier config to /home/joe/Desktop/repos/another-vue/.prettierrc
+2025-07-22 08:01:48,093 - INFO - Installing Tailwind CSS manually...
+2025-07-22 08:01:48,093 - INFO - Tailwind CSS already installed. Skipping installation.
+2025-07-22 08:01:48,093 - INFO - Initializing Git repository...
+2025-07-22 08:01:48,097 - INFO - Initialized Git repository
+2025-07-22 08:01:48,097 - INFO - Scaffold metadata written to /home/joe/Desktop/repos/another-vue/.scaffold.json
+2025-07-22 08:01:48,097 - INFO - Project 'another-vue' created successfully

@@ -81,17 +81,30 @@ def create_vue_project(
             logging.error("src directory not found")
             return False, "Vue project creation failed: src directory not found"
 
+        # Update package.json to add lint script
+        package_json_path = os.path.join(project_dir, "package.json")
+        with open(package_json_path, "r") as f:
+            package_json = json.load(f)
+        package_json["scripts"] = package_json.get("scripts", {})
+        package_json["scripts"]["lint"] = "eslint src/**/*.{js,ts,vue} --fix"
+        with open(package_json_path, "w") as f:
+            json.dump(package_json, f, indent=2)
+        logging.info(f"Updated {package_json_path} with lint script")
+
         if use_typescript:
             logging.info("Installing TypeScript dependencies")
-            subprocess.run(
+            result = subprocess.run(
                 [package_manager, "install", "--save-dev", "typescript", "@types/node"],
                 cwd=project_dir,
                 check=True,
+                capture_output=True,
+                text=True,
             )
+            logging.info(f"TypeScript installation: {result.stdout}")
 
         if use_eslint:
             logging.info(f"Installing ESLint with config {eslint_config}")
-            subprocess.run(
+            result = subprocess.run(
                 [
                     package_manager,
                     "install",
@@ -102,7 +115,10 @@ def create_vue_project(
                 ],
                 cwd=project_dir,
                 check=True,
+                capture_output=True,
+                text=True,
             )
+            logging.info(f"ESLint installation: {result.stdout}")
             # Create .eslintrc.json
             eslint_config_json = {
                 "env": {"browser": True, "es2021": True},
@@ -121,14 +137,14 @@ def create_vue_project(
             # Run eslint --fix to auto-correct linting issues
             logging.info("Running ESLint auto-fix on src/ files")
             try:
-                subprocess.run(
-                    [package_manager, "run", "eslint", "src/**/*.{js,ts,vue}", "--fix"],
+                result = subprocess.run(
+                    ["npx", "eslint", "src/**/*.{js,ts,vue}", "--fix"],
                     cwd=project_dir,
                     check=True,
                     capture_output=True,
                     text=True,
                 )
-                logging.info("ESLint auto-fix completed successfully")
+                logging.info(f"ESLint auto-fix completed: {result.stdout}")
             except subprocess.CalledProcessError as e:
                 logging.warning(
                     f"ESLint auto-fix failed: {e.stderr or e.stdout or 'No additional error details'}"
@@ -138,19 +154,24 @@ def create_vue_project(
                 logging.warning(f"Unexpected error during ESLint auto-fix: {str(e)}")
 
         if use_tailwind:
-            logging.info("Installing Tailwind CSS with PostCSS plugin")
-            subprocess.run(
+            logging.info("Installing Tailwind CSS with PostCSS plugins")
+            result = subprocess.run(
                 [
                     package_manager,
                     "install",
                     "--save-dev",
                     "tailwindcss",
+                    "@tailwindcss/postcss",
                     "postcss",
                     "autoprefixer",
+                    "postcss-import",
                 ],
                 cwd=project_dir,
                 check=True,
+                capture_output=True,
+                text=True,
             )
+            logging.info(f"Tailwind/PostCSS installation: {result.stdout}")
             # Manually create tailwind.config.js
             tailwind_config = {
                 "content": ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
@@ -161,12 +182,26 @@ def create_vue_project(
             with open(tailwind_config_file, "w") as f:
                 f.write(f"module.exports = {json.dumps(tailwind_config, indent=2)}")
             logging.info(f"Created {tailwind_config_file}")
-            # Manually create postcss.config.js
-            postcss_config = {"plugins": {"tailwindcss": {}, "autoprefixer": {}}}
-            postcss_config_file = os.path.join(project_dir, "postcss.config.js")
-            with open(postcss_config_file, "w") as f:
-                f.write(f"module.exports = {json.dumps(postcss_config, indent=2)}")
-            logging.info(f"Created {postcss_config_file}")
+            # Create vue.config.js for PostCSS integration
+            vue_config = {
+                "css": {
+                    "loaderOptions": {
+                        "postcss": {
+                            "postcssOptions": {
+                                "plugins": [
+                                    ["postcss-import", {}],
+                                    ["@tailwindcss/postcss", {}],
+                                    ["autoprefixer", {}],
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+            vue_config_file = os.path.join(project_dir, "vue.config.js")
+            with open(vue_config_file, "w") as f:
+                f.write(f"module.exports = {json.dumps(vue_config, indent=2)}")
+            logging.info(f"Created {vue_config_file}")
             # Update or create src/assets/main.css
             css_file = os.path.join(project_dir, "src", "assets", "main.css")
             tailwind_directives = """
@@ -179,18 +214,33 @@ def create_vue_project(
             with open(css_file, "w") as f:
                 f.write(tailwind_directives)
             logging.info(f"Created/Updated {css_file} with Tailwind directives")
+            # Add import to main.js or main.ts
+            main_file = os.path.join(
+                project_dir, "src", "main.ts" if use_typescript else "main.js"
+            )
+            if os.path.exists(main_file):
+                with open(main_file, "r") as f:
+                    main_content = f.read()
+                if "import './assets/main.css'" not in main_content:
+                    main_content = "import './assets/main.css';\n" + main_content
+                    with open(main_file, "w") as f:
+                        f.write(main_content)
+                    logging.info(f"Added CSS import to {main_file}")
 
         if use_prettier:
             logging.info("Installing Prettier")
-            subprocess.run(
+            result = subprocess.run(
                 [package_manager, "install", "--save-dev", "prettier"],
                 cwd=project_dir,
                 check=True,
+                capture_output=True,
+                text=True,
             )
+            logging.info(f"Prettier installation: {result.stdout}")
 
         if use_stylelint:
             logging.info("Installing Stylelint")
-            subprocess.run(
+            result = subprocess.run(
                 [
                     package_manager,
                     "install",
@@ -200,7 +250,10 @@ def create_vue_project(
                 ],
                 cwd=project_dir,
                 check=True,
+                capture_output=True,
+                text=True,
             )
+            logging.info(f"Stylelint installation: {result.stdout}")
             stylelint_config = {
                 "extends": "stylelint-config-standard",
                 "rules": {"indentation": 2, "number-leading-zero": "always"},
