@@ -43,7 +43,7 @@ def create_angular_project(
             "--directory",
             project_dir,
             "--skip-git",  # Git handled by utils.git_manager
-            "--style=css",
+            "--style=scss",  # Explicitly set SCSS for Tailwind compatibility
             "--routing=true",
             "--ssr=false",
         ]
@@ -71,31 +71,31 @@ def create_angular_project(
                     "--save-dev",
                     "eslint",
                     f"eslint-config-{eslint_config}",
+                    "@angular-eslint/schematics",
+                    "@angular-eslint/builder",
+                    "@typescript-eslint/parser",
+                    "@typescript-eslint/eslint-plugin",
                 ],
                 cwd=project_dir,
                 check=True,
             )
-            # Initialize ESLint
-            subprocess.run(
-                [
-                    "npx",
-                    "eslint",
-                    "--init",
+            # Create .eslintrc.json directly
+            eslint_config_json = {
+                "env": {"browser": True, "es2021": True},
+                "extends": [
+                    f"eslint-config-{eslint_config}",
+                    "plugin:@angular-eslint/recommended",
+                    "plugin:@typescript-eslint/recommended",
                 ],
-                cwd=project_dir,
-                check=True,
-                input=(
-                    "To check syntax and find problems\n"
-                    "JavaScript modules (import/export)\n"
-                    "Angular\n"
-                    "TypeScript: Yes\n"
-                    "Browser\n"
-                    f"Use a popular style guide\n{eslint_config}\n"
-                    "JSON\n"
-                    "Yes\n"
-                ).encode(),
-                text=False,
-            )
+                "parser": "@typescript-eslint/parser",
+                "parserOptions": {"ecmaVersion": 12, "sourceType": "module"},
+                "plugins": ["@angular-eslint", "@typescript-eslint"],
+                "rules": custom_eslint_rules.get("rules", {}),
+            }
+            eslint_file = os.path.join(project_dir, ".eslintrc.json")
+            with open(eslint_file, "w") as f:
+                json.dump(eslint_config_json, f, indent=2)
+            logging.info(f"Created {eslint_file} with ESLint configuration")
 
         if use_tailwind:
             logging.info("Installing Tailwind CSS with PostCSS plugin")
@@ -127,16 +127,25 @@ def create_angular_project(
             with open(postcss_config_file, "w") as f:
                 f.write(f"module.exports = {json.dumps(postcss_config, indent=2)}")
             logging.info(f"Created {postcss_config_file}")
-            # Update src/styles.css
-            css_file = os.path.join(project_dir, "src", "styles.css")
+            # Update or create stylesheet (styles.scss or styles.css)
+            styles_file = None
+            for ext in ["scss", "css"]:
+                potential_file = os.path.join(project_dir, "src", f"styles.{ext}")
+                if os.path.exists(potential_file):
+                    styles_file = potential_file
+                    break
+            if not styles_file:
+                styles_file = os.path.join(project_dir, "src", "styles.scss")
+                with open(styles_file, "w") as f:
+                    f.write("")  # Create empty file if none exists
             tailwind_directives = """
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 """
-            with open(css_file, "w") as f:
+            with open(styles_file, "w") as f:
                 f.write(tailwind_directives)
-            logging.info(f"Updated {css_file} with Tailwind directives")
+            logging.info(f"Updated {styles_file} with Tailwind directives")
 
         if use_prettier:
             logging.info("Installing Prettier")
