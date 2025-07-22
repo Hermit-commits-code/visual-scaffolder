@@ -30,6 +30,16 @@ class ProjectScaffolderApp:
             value='{"printWidth": 80, "singleQuote": true, "trailingComma": "es5"}'
         )
         self.current_step = 1
+
+        # Live preview updates
+        self.framework.trace_add("write", lambda *args: self.update_preview())
+        self.use_typescript.trace_add("write", lambda *args: self.update_preview())
+        self.use_tailwind.trace_add("write", lambda *args: self.update_preview())
+        self.use_eslint.trace_add("write", lambda *args: self.update_preview())
+        self.use_prettier.trace_add("write", lambda *args: self.update_preview())
+        self.use_git.trace_add("write", lambda *args: self.update_preview())
+        self.project_name.trace_add("write", lambda *args: self.update_preview())
+
         log_file = os.path.join(
             self.project_path.get() or os.getcwd(), "logs", "scaffold.log"
         )
@@ -79,9 +89,7 @@ class ProjectScaffolderApp:
             )
             return
         if not re.match(r"^[a-zA-Z0-9-]{1,50}$", project_name):
-            logging.error(
-                f"Invalid project name: {project_name}. Must be alphanumeric with hyphens, 1-50 characters"
-            )
+            logging.error("Invalid project name format")
             self.status_label.configure(
                 text="Error: Project name must be alphanumeric with hyphens, 1-50 characters",
                 bootstyle="danger",
@@ -181,14 +189,47 @@ class ProjectScaffolderApp:
         ttk.Checkbutton(
             frame, text="Initialize Git repository", variable=self.use_git
         ).grid(row=12, column=0, pady=5, sticky=tk.W)
+
+        ttk.Label(frame, text="\U0001f4c1 Project Preview:").grid(
+            row=13, column=0, pady=5, sticky=tk.W
+        )
+        self.preview_text = tk.Text(frame, height=10, width=60, wrap="none")
+        self.preview_text.grid(
+            row=14, column=0, columnspan=2, pady=5, sticky=(tk.W, tk.E)
+        )
+        self.update_preview()
+
         ttk.Button(frame, text="Back", command=lambda: self.goto_step(2)).grid(
-            row=13, column=0, pady=10, sticky=tk.W
+            row=15, column=0, pady=10, sticky=tk.W
         )
         ttk.Button(frame, text="Create", command=self.create_project).grid(
-            row=13, column=1, pady=10, sticky=tk.E
+            row=15, column=1, pady=10, sticky=tk.E
         )
         self.status_label = ttk.Label(frame, text="")
-        self.status_label.grid(row=14, column=0, columnspan=2, pady=5)
+        self.status_label.grid(row=16, column=0, columnspan=2, pady=5)
+
+    def update_preview(self):
+        if not hasattr(self, "preview_text"):
+            return  # Don't run if preview_text isn't built yet
+
+        project_name = self.project_name.get() or "my-project"
+        preview_lines = [f"{project_name}/"]
+
+        preview_lines.append("├── package.json")
+        if self.use_git.get():
+            preview_lines.append("├── .gitignore")
+        if self.use_tailwind.get():
+            preview_lines.append("├── tailwind.config.js")
+            preview_lines.append("├── postcss.config.js")
+        preview_lines.append("├── README.md")
+        preview_lines.append("├── .scaffold.json")
+        preview_lines.append("├── public/")
+        preview_lines.append("└── src/")
+        if self.framework.get() == "Vue.js":
+            preview_lines.append("    └── App.vue")
+
+        self.preview_text.delete("1.0", tk.END)
+        self.preview_text.insert("1.0", "\n".join(preview_lines))
 
     def goto_step(self, step):
         self.current_step = step
@@ -230,6 +271,7 @@ class ProjectScaffolderApp:
             "prettier_config": prettier_config,
             "use_git": self.use_git.get(),
         }
+
         scaffolder = ProjectScaffolder(project_path)
         success, error = scaffolder.create_project(config)
         if success:

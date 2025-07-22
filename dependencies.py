@@ -80,6 +80,21 @@ class DependencyManager:
             logging.info("Vue CLI not installed or not found in PATH")
             return False, "Vue CLI is not installed. Run: npm install -g @vue/cli"
 
+    def check_angular_cli(self):
+        try:
+            result = subprocess.run(
+                ["ng", "--version"], capture_output=True, text=True, check=True
+            )
+            angular_version = result.stdout.strip()
+            logging.info(f"Angular CLI found: {angular_version}")
+            return True, ""
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            logging.info("Angular CLI not installed or not found in PATH")
+            return (
+                False,
+                "Angular CLI is not installed. Run: npm install -g @angular/cli",
+            )
+
     def install_node(self):
         internet_success, internet_error = self.check_internet()
         if not internet_success:
@@ -147,6 +162,29 @@ class DependencyManager:
             logging.error(error)
             return False, error
 
+    def install_angular_cli(self):
+        try:
+            logging.info("Installing Angular CLI globally")
+            subprocess.run(
+                ["npm", "install", "-g", "@angular/cli"],
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            result = subprocess.run(
+                ["ng", "--version"], capture_output=True, text=True, check=True
+            )
+            logging.info(f"Angular CLI installed: {result.stdout.strip()}")
+            return True, ""
+        except subprocess.CalledProcessError as e:
+            error = f"Failed to install Angular CLI: {e.stderr or e.stdout or 'Command failed without output'}"
+            logging.error(error)
+            return False, error
+        except Exception as e:
+            error = f"Unexpected error installing Angular CLI: {str(e)}"
+            logging.error(error)
+            return False, error
+
     def ensure_dependencies(self):
         node_success, node_error = self.check_node()
         if not node_success:
@@ -161,5 +199,22 @@ class DependencyManager:
             vue_success, vue_error = self.install_vue_cli()
             if not vue_success:
                 return False, vue_error
+
+        return True, ""
+
+    def ensure_angular_dependencies(self):
+        node_success, node_error = self.check_node()
+        if not node_success:
+            logging.info("Attempting to install Node.js")
+            node_success, node_error = self.install_node()
+            if not node_success:
+                return False, node_error
+
+        angular_success, angular_error = self.check_angular_cli()
+        if not angular_success:
+            logging.info("Attempting to install Angular CLI")
+            angular_success, angular_error = self.install_angular_cli()
+            if not angular_success:
+                return False, angular_error
 
         return True, ""

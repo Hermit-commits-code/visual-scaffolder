@@ -393,3 +393,76 @@ Run `npm audit` for details.
 2025-07-22 05:07:09,371 - INFO - Internet connection verified
 2025-07-22 05:07:09,403 - ERROR - Sudo requires password or is not available
 2025-07-22 05:07:09,405 - ERROR - Project creation failed: Sudo requires password. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs
+2025-07-22 06:09:05,485 - INFO - Validating project name: super-vue-js
+2025-07-22 06:09:05,487 - INFO - Project name validated successfully
+2025-07-22 06:09:06,702 - INFO - Opening directory chooser dialog
+2025-07-22 06:09:26,718 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:09:27,849 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:09:27,850 - INFO - Project path validated successfully
+2025-07-22 06:09:43,161 - INFO - Creating project: super-vue-js at /home/joe/Desktop/repos
+2025-07-22 06:09:43,162 - INFO - Created project directory: /home/joe/Desktop/repos/super-vue-js
+2025-07-22 06:09:43,209 - INFO - Node.js found: v24.4.1
+2025-07-22 06:09:43,210 - WARNING - Node.js version v24.4.1 is not supported (required: 8-22)
+2025-07-22 06:09:43,210 - INFO - Attempting to install Node.js
+2025-07-22 06:09:43,505 - INFO - Internet connection verified
+2025-07-22 06:09:43,527 - ERROR - Sudo requires password or is not available
+2025-07-22 06:09:43,529 - ERROR - Project creation failed: Sudo requires password. Run: sudo apt update && sudo apt install -y curl && curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt install -y nodejs
+2025-07-22 06:17:19,578 - INFO - Validating project name: super-vue-js
+2025-07-22 06:17:19,580 - INFO - Project name validated successfully
+2025-07-22 06:17:20,861 - INFO - Opening directory chooser dialog
+2025-07-22 06:17:35,724 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:17:36,696 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:17:36,697 - INFO - Project path validated successfully
+2025-07-22 06:20:23,369 - INFO - Validating project name: super-vuejs-project
+2025-07-22 06:20:23,371 - INFO - Project name validated successfully
+2025-07-22 06:20:24,448 - INFO - Opening directory chooser dialog
+2025-07-22 06:20:30,148 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:20:33,708 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:20:33,709 - INFO - Project path validated successfully
+2025-07-22 06:32:06,722 - INFO - Validating project name: super-angular-project
+2025-07-22 06:32:06,724 - INFO - Project name validated successfully
+2025-07-22 06:32:08,135 - INFO - Opening directory chooser dialog
+2025-07-22 06:32:11,634 - INFO - Selected project path: /home/joe/Desktop/repos
+2025-07-22 06:32:12,839 - INFO - Validating project path: /home/joe/Desktop/repos
+2025-07-22 06:32:12,840 - INFO - Project path validated successfully
+2025-07-22 06:32:22,734 - INFO - Creating project: super-angular-project at /home/joe/Desktop/repos
+2025-07-22 06:32:22,735 - INFO - Created project directory: /home/joe/Desktop/repos/super-angular-project
+2025-07-22 06:32:22,753 - INFO - Node.js found: v24.4.1
+2025-07-22 06:32:22,753 - WARNING - Node.js version v24.4.1 is not supported (required: 8-22)
+2025-07-22 06:32:22,753 - INFO - Attempting to install Node.js
+2025-07-22 06:32:22,922 - INFO - Internet connection verified
+2025-07-22 06:32:22,956 - INFO - Sudo access verified (non-interactive)
+2025-07-22 06:32:22,956 - INFO - Downloading Node.js 18.19.0 setup script
+2025-07-22 06:32:23,107 - INFO - Running Node.js setup script
+2025-07-22 06:32:33,453 - INFO - Installing Node.js
+2025-07-22 06:32:34,146 - INFO - Node.js installed: v24.4.1
+2025-07-22 06:32:34,146 - INFO - Cleaned up /tmp/nodesource_setup.sh
+2025-07-22 06:32:34,825 - INFO - Angular CLI found: 20.1.1
+2025-07-22 06:32:34,825 - INFO - Running command: ng new super-angular-project --directory /home/joe/Desktop/repos/super-angular-project --skip-git --style=css --routing=true --ssr=false --skip-tests=true in /home/joe/Desktop/repos
+2025-07-22 06:33:02,068 - INFO - Angular project created: CREATE home/joe/Desktop/repos/super-angular-project/README.md (1482 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/.editorconfig (314 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/.gitignore (587 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/angular.json (3089 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/package.json (1097 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/tsconfig.json (942 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/tsconfig.app.json (429 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/tsconfig.spec.json (408 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/.vscode/extensions.json (130 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/.vscode/launch.json (470 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/.vscode/tasks.json (938 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/main.ts (222 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/index.html (305 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/styles.css (80 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/app/app.css (0 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/app/app.ts (303 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/app/app.html (20122 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/app/app.config.ts (400 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/src/app/app.routes.ts (77 bytes)
+CREATE home/joe/Desktop/repos/super-angular-project/public/favicon.ico (15086 bytes)
+
+2025-07-22 06:33:02,068 - INFO - Installing ESLint with config prettier
+2025-07-22 06:33:07,039 - INFO - Installing Tailwind CSS with PostCSS plugin
+2025-07-22 06:33:08,478 - INFO - Created /home/joe/Desktop/repos/super-angular-project/tailwind.config.js
+2025-07-22 06:33:08,478 - INFO - Created /home/joe/Desktop/repos/super-angular-project/postcss.config.js
+2025-07-22 06:33:08,478 - ERROR - Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular-project/src/styles.css'
+2025-07-22 06:33:08,479 - ERROR - Project creation failed: Unexpected error: [Errno 2] No such file or directory: '/home/joe/Desktop/repos/super-angular-project/src/styles.css'
