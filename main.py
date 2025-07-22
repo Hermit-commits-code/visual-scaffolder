@@ -21,6 +21,7 @@ class ProjectScaffolderApp:
         self.use_tailwind = tk.BooleanVar()
         self.use_eslint = tk.BooleanVar()
         self.use_prettier = tk.BooleanVar()
+        self.use_git = tk.BooleanVar()
         self.eslint_config = tk.StringVar(value="prettier")
         self.custom_eslint_rules = tk.StringVar(
             value='{"rules": {"semi": ["error", "always"], "quotes": ["error", "single"]}}'
@@ -177,14 +178,17 @@ class ProjectScaffolderApp:
         ttk.Checkbutton(frame, text="Use Prettier", variable=self.use_prettier).grid(
             row=11, column=0, pady=5, sticky=tk.W
         )
+        ttk.Checkbutton(
+            frame, text="Initialize Git repository", variable=self.use_git
+        ).grid(row=12, column=0, pady=5, sticky=tk.W)
         ttk.Button(frame, text="Back", command=lambda: self.goto_step(2)).grid(
-            row=12, column=0, pady=10, sticky=tk.W
+            row=13, column=0, pady=10, sticky=tk.W
         )
         ttk.Button(frame, text="Create", command=self.create_project).grid(
-            row=12, column=1, pady=10, sticky=tk.E
+            row=13, column=1, pady=10, sticky=tk.E
         )
         self.status_label = ttk.Label(frame, text="")
-        self.status_label.grid(row=13, column=0, columnspan=2, pady=5)
+        self.status_label.grid(row=14, column=0, columnspan=2, pady=5)
 
     def goto_step(self, step):
         self.current_step = step
@@ -224,6 +228,7 @@ class ProjectScaffolderApp:
             "custom_eslint_rules": custom_eslint_rules,
             "use_prettier": self.use_prettier.get(),
             "prettier_config": prettier_config,
+            "use_git": self.use_git.get(),
         }
         scaffolder = ProjectScaffolder(project_path)
         success, error = scaffolder.create_project(config)

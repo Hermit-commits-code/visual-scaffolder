@@ -1,6 +1,8 @@
 import os
 import logging
 from frameworks.vue import create_vue_project
+from frameworks.tailwind import install_tailwind  # <-- New import
+from utils.git_manager import init_git_repo
 
 
 class ProjectScaffolder:
@@ -19,10 +21,9 @@ class ProjectScaffolder:
             project_name = config["project_name"]
             project_path = config["project_path"]
             framework = config.get("framework", "Vue.js")
-            os.makedirs(os.path.join(project_path, project_name), exist_ok=True)
-            logging.info(
-                f"Created project directory: {os.path.join(project_path, project_name)}"
-            )
+            full_project_path = os.path.join(project_path, project_name)
+            os.makedirs(full_project_path, exist_ok=True)
+            logging.info(f"Created project directory: {full_project_path}")
 
             if framework == "Vue.js":
                 success, error = create_vue_project(
@@ -50,7 +51,20 @@ class ProjectScaffolder:
                 )
                 return True, ""
 
+            # ✅ Tailwind manual install step (optional override)
+            if config.get("use_tailwind", False):
+                logging.info("Installing Tailwind CSS manually...")
+                install_tailwind(full_project_path)
+
+            # Initialize Git repository if requested
+            if config.get("use_git", False):
+                logging.info("Initializing Git repo...")
+                init_git_repo(
+                    full_project_path, project_type="node"
+                )  # You can auto-detect later
+
             return True, ""
+
         except Exception as e:
             logging.error(f"Failed to create project: {str(e)}")
             return False, f"Failed to create project: {str(e)}"
